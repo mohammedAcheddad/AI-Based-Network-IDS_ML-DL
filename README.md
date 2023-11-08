@@ -208,6 +208,7 @@ We've only covered Multiclass and deep learning yet
 
 #### Confusion Matrix Analysis
 
+![image](https://github.com/mohammedAcheddad/AI-Based-Network-IDS_ML-DL/assets/105829473/d24c3c8c-d57e-4fa9-bc38-ee84054e2b3d)
 
 
 The confusion matrix is a performance measurement for machine learning classification. It is extremely useful for measuring recall, precision, specificity, accuracy, and most importantly, AUC-ROC curves. The provided matrix includes the following classes: 'normal', 'DoS', 'Probe', 'R2L', and 'U2R'.
@@ -222,11 +223,34 @@ The confusion matrix is a performance measurement for machine learning classific
 
 #### Model Performance Metrics
 
+>AUC Score on Test
+
+	- Class 0 (normal): 0.878
+	- Class 1 (Dos): 0.767
+	- Class 2 (Probe): 0.546
+	- Class 3 (R2L): 0.604
+	- Class 4 (U2R): 0.788
+
+
 - **Accuracy**: This metric gives us the overall accuracy of the model, which in this case is approximately 74.41%. While this gives an overall sense of performance, it doesn't provide detail on class-specific accuracy.
 
 - **AUC Scores**: The AUC scores are quite high, which suggests the model has a good measure of separability. It means that there is a high chance that the model can distinguish between positive class and negative class for each class type.
 
 #### Classification Report
+
+
+## Classification Report on Data Test
+
+|           | Precision |   Recall  | F1-Score |  Support |
+|-----------|:---------:|:---------:|:--------:|:--------:|
+|   normal  |   0.89    |   0.80    |   0.85   |   7460   |
+|     Dos   |   0.81    |   0.55    |   0.65   |   2421   |
+|   Probe   |   0.96    |   0.09    |   0.17   |   2885   |
+|     R2L   |   0.88    |   0.21    |   0.34   |   67     |
+|     U2R   |   0.66    |   0.94    |   0.78   |   9711   |
+
+
+
 
 - **Precision**: Indicates the ratio of correctly predicted positive observations to the total predicted positives. High precision relates to the low false positive rate. For example, 'normal' has a precision of 0.89, which is quite good.
 
@@ -235,6 +259,11 @@ The confusion matrix is a performance measurement for machine learning classific
 - **F1-Score**: The weighted average of Precision and Recall. Therefore, this score takes both false positives and false negatives into account. An F1-score is a good way to show that a class has a good recall and precision balance.
 
 - **Support**: The number of actual occurrences of the class in the specified dataset. For imbalanced data, this is a crucial metric to observe.
+
+| Accuracy  |           |           |           |   0.74   |
+|-----------|:---------:|:---------:|:--------:|:--------:|
+| Macro Avg |   0.84    |   0.52    |   0.56   |  22544   |
+| Weighted Avg | 0.79    |   0.74    |   0.71   |  22544   |
 
 From the classification report and confusion matrix, we can deduce that the model has an overall good performance with some areas of improvement. Particularly, the model seems to struggle with 'R2L' and 'Probe' classes in terms of precision and recall which indicates potential areas to focus on improving, possibly due to imbalanced dataset issues or the model not learning sufficient discriminative features for these categories.
 
