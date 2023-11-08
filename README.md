@@ -1,7 +1,40 @@
 
+# AI-Based-Network-IDS_ML-DL
 
 
-## Dataset Choice: Embracing Diversity with NSL-KDD and UNSW-NB 15
+## Table of Contents
+- [Introduction](#introduction)
+- [Project Objectives](#project-objectives)
+- [Dataset Overview](#dataset-overview)
+  - [NSL-KDD Dataset](#nsl-kdd-dataset)
+  - [UNSW-NB 15 Dataset](#unsw-nb-15-dataset)
+- [Why Not KDD'99?](#why-not-kdd99)
+- [Methodology](#methodology)
+  - [Data Preprocessing](#data-preprocessing)
+  - [Feature Identification and Categorization](#feature-identification-and-categorization)
+    - [Connection Information](#connection-information)
+    - [Connection Content](#connection-content)
+    - [Traffic Information](#traffic-information)
+    - [Output Label](#output-label)
+  - [Model Development](#model-development)
+    - [Machine Learning Models](#machine-learning-models)
+    - [Deep Learning Models](#deep-learning-models)
+- [Experimental Setup](#experimental-setup)
+  - [Training the Models](#training-the-models)
+  - [Model Evaluation](#model-evaluation)
+- [Results and Discussion](#results-and-discussion)
+- [Challenges and Limitations](#challenges-and-limitations)
+- [Conclusion](#conclusion)
+
+
+## Introduction
+
+In the ever-evolving landscape of cyber threats, the significance of robust network security systems cannot be overstated. Traditional intrusion detection systems (IDS) often struggle to keep pace with the complexity and novelty of modern cyber-attacks. Enter "AI-Based-Network-IDS_ML-DL," a project that stands at the forefront of this challenge. This initiative is driven by the integration of advanced Artificial Intelligence (AI), utilizing Machine Learning (ML) and Deep Learning (DL) techniques to analyze and predict network intrusions with unprecedented accuracy.
+
+The "AI-Based-Network-IDS_ML-DL" project aims to harness the power of two significant datasets: NSL-KDD and UNSW-NB 15, each offering a different perspective and set of challenges. By incorporating these diverse datasets, the project endeavors to build an IDS that not only learns from historical patterns but also adapts to emerging threats, ensuring a future-ready defense mechanism for network security.
+
+
+## Dataset Overview
 
 In our quest to create a robust and highly efficient network security model, we have chosen to work with two distinctive datasets: NSL-KDD and UNSW-NB 15. Each of these datasets offers unique insights and challenges, providing a comprehensive ground for testing and improving our intrusion detection system.
 
@@ -40,3 +73,176 @@ Furthermore, the number of records in the ***NSL-KDD*** train and test sets are 
 ### Why Not KDD'99?
 
 While KDD'99 has been a pivotal dataset in the realm of network security, its relevance has dwindled over the years, primarily due to its inherent biases and redundancies. The dataset is plagued by a large number of duplicate records, skewing the learning process towards more frequent patterns and potentially leading to a false sense of accuracy and security. This bias towards frequent records diminishes our model’s ability to detect rare, yet potentially devastating, network intrusions. The NSL-KDD dataset effectively addresses these issues, providing a cleaner, more balanced dataset for our intrusion detection system.
+
+## Methodology
+
+###  Data Preprocessing  
+
+1. **Loading the Dataset:**
+   - Load training and test datasets using Pandas library.
+
+2. **Dropping Redundant Features:** 
+   - The 'difficulty' level feature is removed as it is not required for intrusion detection.
+
+3. **Label Consolidation:**
+   - The attack labels are consolidated into their respective attack categories.
+
+4. **Exploratory Data Analysis (EDA):**
+   - Use pie charts to visualize the distribution of protocol types and attack labels.
+
+5. **Feature Selection:**
+   - Keep a copy of the original dataset for multi-class classification.
+
+6. **Data Normalization:**
+   - Apply standard scaling to normalize numerical features in the dataset.
+
+7. **Encoding Categorical Variables:**
+   - Perform one-hot encoding for categorical features such as 'protocol_type', 'service', and 'flag'.
+
+8. **Label Encoding:**
+   - Convert the multiclass labels into numerical format using Label Encoding.
+
+9. **Data Preparation:**
+   - Split the data into feature set `X` and target variable `y`.
+   - One-hot encode the target variable for compatibility with the neural network model.
+
+10. **Data Reshaping:**
+    - Reshape the feature set to fit the input requirements of the Convolutional Neural Network (CNN).
+
+
+### Feature Identification and Categorization
+
+In order to develop a robust and effective Network Intrusion Detection System (NIDS) using Machine Learning (ML) and Deep Learning (DL), it is imperative to have a comprehensive understanding of the features that are involved in the network traffic data. The features can be broadly categorized based on their nature and the type of information they provide. 
+
+*  ***Connection Information***
+
+	Features in this category provide basic information about each network connection. This includes details such as the duration of the connection, the type of protocol used, the network service accessed, and the status of the connection. Analyzing these features helps in understanding the general behavior of the network traffic and aids in the initial filtering of benign connections.
+
+	![Screenshot 2023-10-31 171749](https://github.com/mohammedAcheddad/AI-Based-Network-IDS_ML-DL/assets/105829473/658751ac-125d-405b-b82e-95015e28ace7)
+
+*  ***Connection Content***
+	
+	These features delve deeper into the content and characteristics of the network connections. They provide insights into the payload and the nature of the connection, highlighting aspects like urgent data packets, failed login attempts, and file creation operations. Analyzing these features is crucial for identifying malicious activities that exploit vulnerabilities in the network services.
+
+	![Screenshot 2023-10-31 171823](https://github.com/mohammedAcheddad/AI-Based-Network-IDS_ML-DL/assets/105829473/9c5cd334-a2b0-4311-bc78-0b22fd030a02)
+
+*  ***Traffic Information***
+
+	Traffic information features help in understanding the patterns and trends in the network traffic. They provide statistics related to the rate of certain types of errors, the number of connections to the same host or service, and the distribution of service access across different hosts. These features are vital for detecting distributed attacks and network scans.
+
+	![Screenshot 2023-10-31 171911](https://github.com/mohammedAcheddad/AI-Based-Network-IDS_ML-DL/assets/105829473/57c69f04-804f-497f-b38e-2dd65ba0de9b)
+
+### Output Label
+
+Finally, the 'label' feature plays a critical role as it provides the ground truth for supervised learning models. It indicates whether a particular connection is normal or an anomaly, guiding the model during the training phase to learn the patterns associated with benign and malicious network activities.
+* In case of binary prediction the output/outcome/label is categorized into 2 types:
+	* **Normal Traffic**
+	*  **Attack**
+
+* In the case of multiclass prediction the output/outcome/label is categorized into four main attack types besides normal traffic:
+	- **DoS (Denial of Service):** Attacks that shut down a network, making it inaccessible to its intended users.
+	- **R2L (Root to Local):** Unauthorized access from a remote machine.
+	- **Probe:** Surveillance and other probing, such as port scanning.
+	- **U2R (User to Root):** Unauthorized access to local superuser privileges.  
+	
+
+| Attack Type | Description                                                                 | Attack Labels                                               |
+|-------------|-----------------------------------------------------------------------------|-------------------------------------------------------------|
+| DoS         | Denial of Service - attacks that shut down a network making it inaccessible to its intended users.  | apache2, back, land, neptune, mailbomb, pod, processtable, smurf, teardrop, udpstorm, worm (...)                           |
+| R2L         | Root to Local - unauthorized access from a remote machine.                  | ftp_write,guess_passwd, httptunnel, imap, multihop, named (...) |                               |
+| Probe       | Surveillance and other probing, such as port scanning.                      | ipsweep,mscan, nmap, portsweep, saint, satan (...)            |
+| U2R         | User to Root - unauthorized access to local superuser privileges.           |buffer_overflow, loadmodule, perl, ps, rootkit, sqlattack (...) |
+
+
+
+
+
+<!-- Add Table for Output Label here -->
+
+
+
+ By thoroughly understanding and categorizing these features, we set a solid foundation for feature selection and model training in the subsequent stages of our project. This structured approach ensures that we utilize the most relevant features, leading to a more accurate and efficient NIDS.
+
+### Model Development
+
+The process of model development in our Intrusion Detection System (IDS) follows a structured approach that starts from understanding the data, pre-processing it, and then experimenting with various machine learning and deep learning models to determine the best performing model.
+
+#### Machine Learning Models
+
+Machine learning models are essential in pattern recognition and classification tasks. In our IDS, several machine learning models will be evaluated to identify network intrusions effectively. Below are the models that we will consider:
+
+1. **Decision Trees**: Decision trees are a non-parametric supervised learning method used for classification and regression. The goal is to create a model that predicts the value of a target variable by learning simple decision rules inferred from the data features.
+
+2. **Random Forest**: This ensemble method works by constructing a multitude of decision trees at training time and outputting the class that is the mode of the classes (classification) of the individual trees.
+
+3. **Support Vector Machines (SVM)**: SVMs are based on the idea of finding a hyperplane that best divides a dataset into classes. Support Vector Machines are particularly well-suited for binary classification problems.
+
+4. **K-Nearest Neighbors (KNN)**: The principle behind KNN is to find a predefined number of training samples closest in distance to the new point and predict the label from these.
+
+5. **Naive Bayes**: This is a set of supervised learning algorithms based on applying Bayes’ theorem with the “naive” assumption of conditional independence between every pair of features given the value of the class variable.
+
+6. **Logistic Regression**: Despite its name, logistic regression is used in binary classification rather than regression. It estimates the probabilities using a logistic function.
+
+#### Deep Learning Models (on-going)
+
+Deep learning models, particularly neural networks, have proven to be highly effective in a wide range of classification tasks. For our IDS, we consider the following deep learning architectures:
+
+1. **Convolutional Neural Networks (CNN)**: Although commonly used in image recognition, CNNs can also be applied to sequence data such as time-series and have the advantage of being able to capture spatial-temporal features in the dataset.
+
+2. **Recurrent Neural Networks (RNN)** *~to be implemented~* : RNNs are suitable for sequence prediction problems since they can capture temporal dynamics, which is critical in network traffic where the sequence of packets could be an indicator of an attack pattern.
+
+3. **Long Short-Term Memory Networks (LSTM)** *~to be implemented~*: LSTMs are a special kind of RNN, capable of learning long-term dependencies. They work exceptionally well on a wide range of problems and are now widely used.
+
+4. **Autoencoders** *~to be implemented~*: These are used for learning efficient codings and have been applied in anomaly detection, which is akin to intrusion detection. They learn to capture the most significant features and can reconstruct the input.
+
+6. **Generative Adversarial Networks (GAN)** *~to be implemented~*: In the context of IDS, GANs can be used for generating synthetic attack data to augment the training dataset, improving the robustness of the system.
+
+Each of these models will be trained using the pre-processed dataset , which involved converting attack labels into broad categories. The models performance will be evaluated based on accuracy, precision, recall, F1-score, and the area under the receiver operating characteristic (ROC) curve. The model that best identifies the different types of network intrusions will be selected for deployment in the IDS. Further hyperparameter tuning and cross-validation will be applied to ensure the model's generalization across different network environments.
+
+
+The images provided include a confusion matrix from a test dataset and a text output with performance metrics such as loss, accuracy, AUC scores, and a classification report for a deep learning model. Here's an analysis based on the provided results:
+
+### Deep Learning Model Evaluation
+
+We've only covered Multiclass and deep learning yet 
+
+#### Confusion Matrix Analysis
+
+
+
+The confusion matrix is a performance measurement for machine learning classification. It is extremely useful for measuring recall, precision, specificity, accuracy, and most importantly, AUC-ROC curves. The provided matrix includes the following classes: 'normal', 'DoS', 'Probe', 'R2L', and 'U2R'.
+
+- **True Positives (TP)**: The diagonal from the top left to bottom right shows the number of correct predictions for each class. For instance, the model correctly predicted 'normal' 5991 times and 'U2R' 9169 times.
+  
+- **False Positives (FP)**: Columns show the instances where other classes were incorrectly predicted as the given class. For example, there were 318 instances where 'U2R' was incorrectly predicted as 'normal'.
+
+- **False Negatives (FN)**: Rows show the instances where the given class was incorrectly predicted as another class. For example, there was 1 instance where 'Probe' was incorrectly predicted as 'normal'.
+
+- **True Negatives (TN)**: Not directly shown in the matrix, but implied by the absence of counts in other categories for a specific class.
+
+#### Model Performance Metrics
+
+- **Accuracy**: This metric gives us the overall accuracy of the model, which in this case is approximately 74.41%. While this gives an overall sense of performance, it doesn't provide detail on class-specific accuracy.
+
+- **AUC Scores**: The AUC scores are quite high, which suggests the model has a good measure of separability. It means that there is a high chance that the model can distinguish between positive class and negative class for each class type.
+
+#### Classification Report
+
+- **Precision**: Indicates the ratio of correctly predicted positive observations to the total predicted positives. High precision relates to the low false positive rate. For example, 'normal' has a precision of 0.89, which is quite good.
+
+- **Recall (Sensitivity)**: Indicates the ratio of correctly predicted positive observations to the all observations in actual class. 'U2R' has a recall of 0.94, which suggests the model is very good at detecting this class.
+
+- **F1-Score**: The weighted average of Precision and Recall. Therefore, this score takes both false positives and false negatives into account. An F1-score is a good way to show that a class has a good recall and precision balance.
+
+- **Support**: The number of actual occurrences of the class in the specified dataset. For imbalanced data, this is a crucial metric to observe.
+
+From the classification report and confusion matrix, we can deduce that the model has an overall good performance with some areas of improvement. Particularly, the model seems to struggle with 'R2L' and 'Probe' classes in terms of precision and recall which indicates potential areas to focus on improving, possibly due to imbalanced dataset issues or the model not learning sufficient discriminative features for these categories.
+
+In terms of deep learning model selection, based on these results, the model can be further optimized by:
+
+- Addressing class imbalance, potentially through resampling techniques or using different loss functions that are robust to imbalance.
+- Experimenting with different architectures or hyperparameters to improve precision and recall for the underperforming classes.
+- Utilizing techniques like cross-validation to ensure the model's robustness and generalizability.
+- Employing regularization techniques to prevent overfitting, if it's determined to be a problem.
+
+The high AUC scores indicate that the model's capability to distinguish between classes is quite strong. However, due to the high false negative rates for some classes, we might explore models that provide a better balance between sensitivity and specificity.
