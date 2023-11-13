@@ -29,9 +29,9 @@
 
 ## Introduction
 
-In the ever-evolving landscape of cyber threats, the significance of robust network security systems cannot be overstated. Traditional intrusion detection systems (IDS) often struggle to keep pace with the complexity and novelty of modern cyber-attacks. Enter "AI-Based-Network-IDS_ML-DL," a project that stands at the forefront of this challenge. This initiative is driven by the integration of advanced Artificial Intelligence (AI), utilizing Machine Learning (ML) and Deep Learning (DL) techniques to analyze and predict network intrusions with unprecedented accuracy.
+In the ever-evolving landscape of cyber threats, the significance of robust network security systems cannot be overstated. Traditional intrusion detection systems (IDS) often struggle to keep pace with the complexity and novelty of modern cyber-attacks. Enter AI-Based-Network-IDS_ML-DL, a project that stands at the forefront of this challenge. This initiative is driven by the integration of advanced Artificial Intelligence (AI), utilizing Machine Learning (ML) and Deep Learning (DL) techniques to analyze and predict network intrusions with unprecedented accuracy.
 
-The "AI-Based-Network-IDS_ML-DL" project aims to harness the power of two significant datasets: NSL-KDD and UNSW-NB 15, each offering a different perspective and set of challenges. By incorporating these diverse datasets, the project endeavors to build an IDS that not only learns from historical patterns but also adapts to emerging threats, ensuring a future-ready defense mechanism for network security.
+This project aims to harness the power of two significant datasets: NSL-KDD and UNSW-NB 15, each offering a different perspective and set of challenges. By incorporating these diverse datasets, the project endeavors to build an IDS that not only learns from historical patterns but also adapts to emerging threats, ensuring a future-ready defense mechanism for network security.
 
 
 ## Dataset Overview
