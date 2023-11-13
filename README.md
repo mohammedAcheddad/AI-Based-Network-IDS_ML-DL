@@ -275,3 +275,37 @@ In terms of deep learning model selection, based on these results, the model can
 - Employing regularization techniques to prevent overfitting, if it's determined to be a problem.
 
 The high AUC scores indicate that the model's capability to distinguish between classes is quite strong. However, due to the high false negative rates for some classes, we might explore models that provide a better balance between sensitivity and specificity.
+
+## Results and Discussion
+
+The results of the experiments and evaluations are crucial for understanding the effectiveness of the developed AI-based Network IDS . The performance metrics obtained from the testing phase will guide decisions on model selection and potential areas for improvement.
+
+### Challenges and Limitations
+
+Despite the promising results, it's important to acknowledge the challenges and limitations of the AI-Based Network IDS:
+
+1.  **Imbalanced Datasets:**
+    
+    -   Imbalances in the distribution of normal and attack instances can lead to biased models. Addressing this issue through techniques like resampling or adjusting class weights is crucial.
+2.  **Model Interpretability:**
+    
+    -   Deep learning models, in particular, are often considered as "black boxes," making it challenging to interpret their decision-making processes. Ensuring interpretability is essential for gaining trust in the IDS.
+3.  **Adversarial Attacks:**
+    
+    -   Intruders may attempt to manipulate the network traffic to evade detection. Adversarial attacks pose a significant challenge, and models need to be robust against such attempts.
+4.  **Generalization to New Threats:**
+    
+    -   The models should be capable of generalizing to new and unseen threats. Continuous monitoring and updates are necessary to adapt to emerging attack patterns.
+5.  **Computational Resources:**
+    
+    -   Training and deploying deep learning models often require substantial computational resources. Ensuring scalability and efficiency is crucial, especially for real-time intrusion detection.
+
+### Conclusion
+
+This project represents a significant step forward in the realm of network security. By leveraging advanced AI techniques, including machine learning and deep learning, the IDS aims to provide a robust defense mechanism against a wide range of network intrusions.
+
+The selection of diverse datasets, such as NSL-KDD and UNSW-NB 15, allows for a comprehensive evaluation of the IDS under different scenarios. The project's structured methodology, including data preprocessing, feature identification, and model development, ensures a systematic approach to building an effective IDS.
+
+While the presented results showcase promising performance, the ongoing challenges and limitations highlight the need for continuous improvement. Addressing issues related to imbalanced datasets, ensuring model interpretability, and staying resilient against adversarial attacks are key areas for future enhancements.
+
+In conclusion, this project lays the foundation for adaptive and sophisticated intrusion detection systems, contributing to the ongoing efforts to enhance cybersecurity in an ever-evolving digital landscape.
