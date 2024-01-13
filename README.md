@@ -3,28 +3,32 @@
 
 
 ## Table of Contents
-- [Introduction](#introduction)
-- [Project Objectives](#project-objectives)
-- [Dataset Overview](#dataset-overview)
-  - [NSL-KDD Dataset](#nsl-kdd-dataset)
-  - [UNSW-NB 15 Dataset](#unsw-nb-15-dataset)
-- [Why Not KDD'99?](#why-not-kdd99)
-- [Methodology](#methodology)
-  - [Data Preprocessing](#data-preprocessing)
-  - [Feature Identification and Categorization](#feature-identification-and-categorization)
-    - [Connection Information](#connection-information)
-    - [Connection Content](#connection-content)
-    - [Traffic Information](#traffic-information)
-    - [Output Label](#output-label)
-  - [Model Development](#model-development)
-    - [Machine Learning Models](#machine-learning-models)
-    - [Deep Learning Models](#deep-learning-models)
-- [Experimental Setup](#experimental-setup)
-  - [Training the Models](#training-the-models)
-  - [Model Evaluation](#model-evaluation)
-- [Results and Discussion](#results-and-discussion)
-- [Challenges and Limitations](#challenges-and-limitations)
-- [Conclusion](#conclusion)
+- [AI-Based-Network-IDS\_ML-DL](#ai-based-network-ids_ml-dl)
+	- [Table of Contents](#table-of-contents)
+	- [Introduction](#introduction)
+	- [Dataset Overview](#dataset-overview)
+		- [Why Not KDD'99?](#why-not-kdd99)
+	- [Methodology](#methodology)
+		- [Data Preprocessing](#data-preprocessing)
+		- [Feature Identification and Categorization](#feature-identification-and-categorization)
+		- [Output Label](#output-label)
+		- [Model Development](#model-development)
+			- [Machine Learning Models](#machine-learning-models)
+			- [Deep Learning Models (on-going)](#deep-learning-models-on-going)
+		- [Deep Learning Model Evaluation -*Binary*-](#deep-learning-model-evaluation--binary-)
+			- [Confusion Matrix Analysis](#confusion-matrix-analysis)
+			- [Model Performance Metrics](#model-performance-metrics)
+			- [Optimization of Neural Network Using Randomized Search](#optimization-of-neural-network-using-randomized-search)
+			- [Hyperparameter Tuning Approach](#hyperparameter-tuning-approach)
+			- [Parameters and Search Space](#parameters-and-search-space)
+			- [Execution and Results](#execution-and-results)
+		- [Deep Learning Model Evaluation -*MultiClass*-](#deep-learning-model-evaluation--multiclass-)
+			- [Confusion Matrix Analysis](#confusion-matrix-analysis-1)
+			- [Model Performance Metrics](#model-performance-metrics-1)
+			- [Classification Report](#classification-report)
+	- [Results and Discussion](#results-and-discussion)
+		- [Challenges and Limitations](#challenges-and-limitations)
+		- [Conclusion](#conclusion)
 
 
 ## Introduction
@@ -202,22 +206,97 @@ Each of these models will be trained using the pre-processed dataset , which inv
 
 The images provided include a confusion matrix from a test dataset and a text output with performance metrics such as loss, accuracy, AUC scores, and a classification report for a deep learning model. Here's an analysis based on the provided results:
 
-### Deep Learning Model Evaluation
+### Deep Learning Model Evaluation -*Binary*-  
 
-We've only covered Multiclass and deep learning yet 
+We've only covered CNN yet.
+
+#### Confusion Matrix Analysis
+
+The confusion matrix is a crucial metric for evaluating the accuracy of a classification model. It helps in understanding the model's performance in terms of true positives, true negatives, false positives, and false negatives.
+
+![image](https://github.com/mohammedAcheddad/AI-Based-Network-IDS_ML-DL/assets/105829473/4ace7975-6720-4cce-99ef-505d9dad55b8)
+
+- **True Positives (TP)**: The model correctly predicted the positive class.
+- **True Negatives (TN)**: The model correctly predicted the negative class.
+- **False Positives (FP)**: The model incorrectly predicted the negative class as positive.
+- **False Negatives (FN)**: The model incorrectly predicted the positive class as negative.
+
+For our CNN model, the following are the observed counts:
+
+|                | Training Set | Testing Set |
+|----------------|:------------:|:-----------:|
+| True Positives |    46,549    |    11,737   |
+| True Negatives |    53,840    |    13,318   |
+| False Positives|      133     |      51     |
+| False Negatives|      248     |      87     |
+
+#### Model Performance Metrics
+
+The model's effectiveness is quantified using the following metrics:
+
+- **Accuracy**: Reflects the overall correctness of the model. It's the ratio of true predictions (both positive and negative) to the total number of observations.
+- **Precision**: The ratio of true positive predictions to the total number of positive predictions. High precision indicates a low rate of false positives.
+- **Recall (Sensitivity)**: The ratio of true positive predictions to all actual positives. High recall indicates the model is good at detecting positive instances.
+- **F1 Score**: The harmonic mean of precision and recall. A high F1 score suggests a balanced model with both good precision and recall.
+
+The performance metrics obtained for the model are as follows:
+
+- **Training Metrics**:
+  - Accuracy: 99.62%
+  - Precision: 99.72%
+  - Recall: 99.47%
+  - F1 Score: 99.59%
+
+- **Testing Metrics**:
+  - Accuracy: 99.45%
+  - Precision: 99.57%
+  - Recall: 99.26%
+  - F1 Score: 99.42%
+
+#### Optimization of Neural Network Using Randomized Search
+
+#### Hyperparameter Tuning Approach
+To enhance the performance of our CNN model for binary classification, we employed RandomizedSearchCV for hyperparameter tuning. This technique allows us to systematically search through a predefined hyperparameter space to find the most effective configuration for our model.
+
+#### Parameters and Search Space
+The hyperparameters we chose to optimize include the number of neurons in the first and second hidden layers (`units1` and `units2`), the learning rate of the optimizer, the batch size, and the number of epochs. Here is the search space we defined:
+
+- `units1`: [64, 128, 256, 512]
+- `units2`: [32, 64, 128, 256]
+- `learning_rate`: [0.01, 0.001, 0.0001]
+- `batch_size`: [16, 32, 64]
+- `epochs`: [10, 20, 30]
+
+#### Execution and Results
+The optimization process was executed on a GPU to accelerate computations, ensuring a more efficient search. After running the randomized search with cross-validation, we obtained an optimized set of hyperparameters that enhanced the model's performance significantly.
+
+The best configuration from the search is as follows:
+- Number of neurons in the first hidden layer (`units1`): 64
+- Number of neurons in the second hidden layer (`units2`): 64
+- Learning rate: 0.001
+- Batch size: 64
+- Number of epochs: 20
+
+With these optimized hyperparameters, our model achieved a best score of 99.61% on the validation set during the tuning process.
+
+
+
+### Deep Learning Model Evaluation -*MultiClass*-
+
+We've only covered CNN yet
 
 #### Confusion Matrix Analysis
 
 ![image](https://github.com/mohammedAcheddad/AI-Based-Network-IDS_ML-DL/assets/105829473/d24c3c8c-d57e-4fa9-bc38-ee84054e2b3d)
 
 
-The confusion matrix is a performance measurement for machine learning classification. It is extremely useful for measuring recall, precision, specificity, accuracy, and most importantly, AUC-ROC curves. The provided matrix includes the following classes: 'normal', 'DoS', 'Probe', 'R2L', and 'U2R'.
+The confusion matrix is a performance measurement for machine learning classification. It is extremely useful for measuring recall, precision, specificity, accuracy, and most importantly, AUC-ROC curves. The provided matrix includes the following classes: 'normal', **DoS**, **Probe**, **R2L**, and **U2R**.
 
-- **True Positives (TP)**: The diagonal from the top left to bottom right shows the number of correct predictions for each class. For instance, the model correctly predicted 'normal' 5991 times and 'U2R' 9169 times.
+- **True Positives (TP)**: The diagonal from the top left to bottom right shows the number of correct predictions for each class. For instance, the model correctly predicted '**normal**' 5991 times and '**U2R**' 9169 times.
   
-- **False Positives (FP)**: Columns show the instances where other classes were incorrectly predicted as the given class. For example, there were 318 instances where 'U2R' was incorrectly predicted as 'normal'.
+- **False Positives (FP)**: Columns show the instances where other classes were incorrectly predicted as the given class. For example, there were 318 instances where '**U2R**' was incorrectly predicted as '**normal**'.
 
-- **False Negatives (FN)**: Rows show the instances where the given class was incorrectly predicted as another class. For example, there was 1 instance where 'Probe' was incorrectly predicted as 'normal'.
+- **False Negatives (FN)**: Rows show the instances where the given class was incorrectly predicted as another class. For example, there was **1** instance where '**Probe**' was incorrectly predicted as '**normal**'.
 
 - **True Negatives (TN)**: Not directly shown in the matrix, but implied by the absence of counts in other categories for a specific class.
 
@@ -239,7 +318,7 @@ The confusion matrix is a performance measurement for machine learning classific
 #### Classification Report
 
 
-## Classification Report on Data Test
+
 
 |           | Precision |   Recall  | F1-Score |  Support |
 |-----------|:---------:|:---------:|:--------:|:--------:|
@@ -275,6 +354,7 @@ In terms of deep learning model selection, based on these results, the model can
 - Employing regularization techniques to prevent overfitting, if it's determined to be a problem.
 
 The high AUC scores indicate that the model's capability to distinguish between classes is quite strong. However, due to the high false negative rates for some classes, we might explore models that provide a better balance between sensitivity and specificity.
+
 
 ## Results and Discussion
 
