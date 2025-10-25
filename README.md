@@ -389,3 +389,13 @@ The selection of diverse datasets, such as NSL-KDD and UNSW-NB 15, allows for a 
 While the presented results showcase promising performance, the ongoing challenges and limitations highlight the need for continuous improvement. Addressing issues related to imbalanced datasets, ensuring model interpretability, and staying resilient against adversarial attacks are key areas for future enhancements.
 
 In conclusion, this project lays the foundation for adaptive and sophisticated intrusion detection systems, contributing to the ongoing efforts to enhance cybersecurity in an ever-evolving digital landscape.
+
+
+## License
+This project is licensed under the [Apache 2.0 License](./LICENSE).
+
+© 2025 Mohammed Ali Cheddad.  
+Please cite this repository if used in academic or research work:
+
+> Cheddad, M.A. (2025). *AI-Based-Network-IDS_ML-DL: Machine and Deep Learning Models for Intrusion Detection Systems.*  
+> GitHub: https://github.com/mohammedAcheddad/AI-Based-Network-IDS_ML-DL
