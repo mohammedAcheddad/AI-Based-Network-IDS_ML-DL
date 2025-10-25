@@ -1,3 +1,9 @@
+![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)
+![Python](https://img.shields.io/badge/Python-3.8+-yellow.svg)
+![Framework](https://img.shields.io/badge/Framework-TensorFlow%7CScikit--Learn-orange.svg)
+![Dataset](https://img.shields.io/badge/Datasets-NSL--KDD%20%7C%20UNSW--NB15-green.svg)
+![Status](https://img.shields.io/badge/Status-Active-success.svg)
+
 
 # AI-Based-Network-IDS_ML-DL
 
