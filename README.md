@@ -1,4 +1,4 @@
-![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
 ![Python](https://img.shields.io/badge/Python-3.8+-yellow.svg)
 ![Framework](https://img.shields.io/badge/Framework-TensorFlow%7CScikit--Learn-orange.svg)
 ![Dataset](https://img.shields.io/badge/Datasets-NSL--KDD%20%7C%20UNSW--NB15-green.svg)
@@ -398,7 +398,7 @@ In conclusion, this project lays the foundation for adaptive and sophisticated i
 
 
 ## License
-This project is licensed under the [Apache 2.0 License](./LICENSE).
+This project is licensed under the [MIT License](./LICENSE).
 
 © 2025 Mohammed Ali Cheddad.  
 Please cite this repository if used in academic or research work:
