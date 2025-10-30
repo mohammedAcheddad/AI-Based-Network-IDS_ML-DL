@@ -3,7 +3,7 @@
 ![Framework](https://img.shields.io/badge/Framework-TensorFlow%7CScikit--Learn-orange.svg)
 ![Dataset](https://img.shields.io/badge/Datasets-NSL--KDD%20%7C%20UNSW--NB15-green.svg)
 ![Status](https://img.shields.io/badge/Status-Active-success.svg)
-
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17488850.svg)](https://doi.org/10.5281/zenodo.17488850)
 
 # AI-Based-Network-IDS_ML-DL
 
