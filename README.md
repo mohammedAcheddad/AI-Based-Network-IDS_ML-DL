@@ -405,3 +405,25 @@ Please cite this repository if used in academic or research work:
 
 > Cheddad, M.A. (2025). *AI-Based-Network-IDS_ML-DL: Machine and Deep Learning Models for Intrusion Detection Systems.*  
 > GitHub: https://github.com/mohammedAcheddad/AI-Based-Network-IDS_ML-DL
+
+
+---
+
+## 📚 Citation
+
+If you use this repository in your research, please cite:
+
+> Cheddad, M.A. (2025). *AI-Based-Network-IDS_ML-DL: Machine and Deep Learning Models for Intrusion Detection Systems.*  
+> Zenodo. [https://doi.org/10.5281/zenodo.17488850](https://doi.org/10.5281/zenodo.17488850)
+
+**BibTeX:**
+```bibtex
+@software{cheddad2025ids,
+  author    = {Mohammed A. Cheddad},
+  title     = {AI-Based-Network-IDS\_ML-DL: Machine and Deep Learning Models for Intrusion Detection Systems},
+  year      = {2025},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.17488850},
+  url       = {https://github.com/mohammedAcheddad/AI-Based-Network-IDS_ML-DL}
+}
+```
